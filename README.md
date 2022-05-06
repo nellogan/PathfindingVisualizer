@@ -5,24 +5,32 @@ Dijkstra guarantees the shortest possible path (optimal). A* will also be optima
 
 ### Search algorithms to choose from:
 Breadth first search
+
 Depth first search
+
 Greedy best first search
+
 Dijkstra's algorithm
+
 A* search algorithm
 
 
 ### How edge cost is calculated:
 g(n) = cost of the path from the start node to n.
+
 h(n) = heuristic function (euclidean distance) that estimates the cost of the cheapest path from n to the finish node.
+
 Dijkstra's: f(n) = g(n)
+
 A*: f(n) = g(n) + h(n)
+
 Greedy best first search: f(n) = h(n)
 
 
 ### How to interact:
 Click and drag on empty (white) nodes to make them walls.
 
-Shift click and drag to make weighted (orange) nodes. Weighted nodess cost double compared to normal nodes
+Press shift+click and drag to make weighted (orange) nodes. Weighted nodess cost double compared to normal nodes
 
 Click and drag start (green) node or finsih (red) node to move it.
 
