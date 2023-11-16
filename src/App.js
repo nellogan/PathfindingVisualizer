@@ -2,8 +2,8 @@ import './App.css';
 import React from 'react';
 import Pathfinder from './Pathfinder/Pathfinder';
 
-function App() {
-//  document.title = "test1";
+function App()
+{
   return (
     <div align="center">
       <Pathfinder />
