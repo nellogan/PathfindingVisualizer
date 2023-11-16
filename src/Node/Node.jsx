@@ -26,4 +26,4 @@ export default function Node2(props) {
       >
       </div>
     );
-};
+}

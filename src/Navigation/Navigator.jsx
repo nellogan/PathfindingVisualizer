@@ -1,22 +1,39 @@
 import React, { useState } from "react";
 import "./Navigator.css";
 
-export default function Navigator(props) {
-  const [algorithm,setAlgorithm] = useState("Run Algorithm");
+export default function Navigator(props)
+{
+  const [algorithm, setAlgorithm] = useState("Run Algorithm");
 
-  function runAlgorithm() {
-    if (algorithm === "Run Breadth First Search") {
-      props.runBFS();
-    } else if (algorithm === "Run Depth First Search") {
-      props.runDFS();
-    } else if (algorithm === "Run Greedy Best First Search") {
-      props.runGBFS();
-    } else if (algorithm === "Run Dijkstra's Algorithm") {
-      props.runDijkstra();
-    } else if (algorithm === "Run A* Algorithm") {
-      props.runAStar();
-    };
-  };
+  function runAlgorithm()
+  {
+    switch(algorithm)
+    {
+      case "Run Breadth First Search":
+        props.runBFS();
+        break;
+
+      case "Run Depth First Search":
+        props.runDFS();
+        break;
+
+      case "Run Greedy Best First Search":
+        props.runGBFS();
+        break;
+
+      case "Run Dijkstra's Algorithm":
+        props.runDijkstra();
+        break;
+
+      case "Run A* Algorithm":
+        props.runAStar();
+        break;
+
+      default:
+        break;
+    }
+  }
+
   return (
     <>
       <Navbar>
@@ -34,18 +51,20 @@ export default function Navigator(props) {
         <NavItem callbackFn = { props.clearGrid } state = { props.state } name = { "clearGrid" } title = "Clear Grid"/>
       </Navbar>
     </>
-  )
-};
+  );
+}
 
-function Navbar(props) {
+function Navbar(props)
+{
   return (
     <nav className = "navbar" >
       <ul className = "navbar-nav" >{ props.children }</ul>
     </nav>
-  )
-};
+  );
+}
 
-function NavItem(props) {
+function NavItem(props)
+{
   const buttonDictionary = {
     "selectAlgorithm":"button select-algorithm-button",
     "runAlgorithm":"button run-algorithm-button",
@@ -67,10 +86,11 @@ function NavItem(props) {
       </p>
       { props.open && props.children }
     </li>
-  )
-};
+  );
+}
 
-function DropdownMenu(props) {
+function DropdownMenu(props)
+{
   const algorithmDictionary = {
     "dfs":"Run Depth First Search",
     "bfs":"Run Breadth First Search",
@@ -79,7 +99,8 @@ function DropdownMenu(props) {
     "astar":"Run A* Algorithm",
   };
 
-  function DropdownItem(props) {
+  function DropdownItem(props)
+  {
     return (
       <p className="menu-item" onClick={() => [
         (props.setAlgorithm(algorithmDictionary[props.name])),
@@ -87,8 +108,8 @@ function DropdownMenu(props) {
       }>
         { props.children }
       </p>
-    )
-  };
+    );
+  }
 
   return (
     <div className="dropdown">
@@ -98,5 +119,5 @@ function DropdownMenu(props) {
       <DropdownItem name={"dijsktra"} { ...props }>Dijkstra</DropdownItem>
       <DropdownItem name={"astar"} { ...props }>A*</DropdownItem>
     </div>
-  )
-};
+  );
+}
