@@ -1,24 +1,36 @@
-# [Interactive pathfinding visualizer live demo](https://nellogan.github.io/PathfindingVisualizer)
-Click on the link above for a live demo. Visualize how search algorithms traverse through a grid with walls and weighted 
-edges. Dijkstra's algorithm guarantees the shortest possible path (optimal). A* algorithm will also determine the 
-shortest path while incorporating a heuristic function. The heuristic estimates the cost of the cheapest path from n to 
-the goal, thereby reducing the amount of neighbors visited and finding the shortest path in less time than Dijkstra's. 
-Greedy best first search only use the heuristic function which will always choose the current shortest cost edge.
+# [Live Demo](https://nellogan.github.io/PathfindingVisualizer)
+Click on the link above for a live demo. Visualize how search algorithms traverse through a graph with walls and weighted 
+edges. Dijkstra's algorithm guarantees the shortest possible path (optimal cost path). The A* algorithm will also determine the 
+shortest path while incorporating a heuristic function (more efficient). The heuristic estimates the cost of the cheapest 
+path from the current node (denoted as 'n') to the goal, thereby reducing the amount of neighbors visited and finding the 
+shortest path in less time than Dijkstra's. Greedy best first search only use the heuristic function which will always 
+choose the current shortest cost edge.
 
 
-### Search algorithms to choose from:
-Breadth first search
+### Search algorithms to choose from
+    Depth first search
+    Breadth first search
+    Greedy best first search
+    Dijkstra's algorithm
+    A* search algorithm
 
-Depth first search
+### How to interact
+Click and drag start node (green) or finish node (red) to move its position.
 
-Greedy best first search
+Shift click to create or remove a wall node (black).
 
-Dijkstra's algorithm
+Shift click to add/remove weight (double cost) to/from a node (pink).
 
-A* search algorithm
+Option to recursively generate a maze. Sometimes the generator will produce a non-solvable maze.
 
+Clean up options:
 
-### How edge cost is calculated:
+    Reset Graph: resets all path (yellow), visited (gray), and neighbor nodes(light green).
+    Clear Weights: clears all weight nodes.
+    Clear Walls: clears all wall nodes.
+    Clear Graph: clear all node types except for the start and end nodes.
+
+### How edge cost is calculated
 g(n) = cost of the path from the start node to n.
 
 h(n) = heuristic function that estimates the cost of the cheapest path from n to the finish node.
@@ -29,17 +41,13 @@ A*: f(n) = g(n) + h(n)
 
 Greedy best first search: f(n) = h(n)
 
+### Tools used: 
+    React
+    CSS
+    Webpack
+    ESBuild
 
-### How to interact:
-Click and drag on empty (white) nodes to make them walls (black).
-
-Press shift+click and drag to make weighted (orange) nodes. Weighted nodes cost double compared to normal nodes
-
-Click and drag start (dark green) node or finish (red) node to move it.
-
-Light green nodes are nodes that are in the neighbor queue while gray nodes are nodes that are already visited.
-
-Option to recursively generate a maze.
-
-### Tech stack: 
-Javascript, CSS, and React.
+### How to run locally
+    git clone https://github.com/nellogan/PathfindingVisualizer
+    npm install
+    npm run start-dev
