@@ -43,7 +43,7 @@ const devConfig = {
   mode: 'development',
   devtool: 'eval-source-map',
   output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'docs'),
       filename: 'bundle.js',
     },
   devServer: {
@@ -61,7 +61,7 @@ const prodConfig = {
   mode: 'production',
   devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     filename: 'bundle.[contenthash].js',
   },
   optimization: {

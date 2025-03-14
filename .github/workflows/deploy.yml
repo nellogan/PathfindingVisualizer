@@ -1,0 +1,40 @@
+name: Deploy to Github Pages
+
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build-prod
+
+      - name: Checkout
+        run: actions/checkout@
+
+      - name: Deploy to Github Pages
+        run: |
+          # Overwrite gh-pages branch with current main branch.
+          git checkout -B gh-pages
+          # Build the minified file.
+          npm run build-prod
+          # Force ./docs to be added even though main has ./docs in its .gitignore
+          git add -f ./docs
+          git commit -m "Deploy to Github Pages"
+          # Push
+          git push -f origin gh-pages
