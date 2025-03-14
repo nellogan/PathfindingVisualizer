@@ -24,9 +24,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Setup git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
       - name: Build
         run: npm run build-prod
-
       - name: Deploy to Github Pages
         run: |
           # Overwrite gh-pages branch with current main branch.
