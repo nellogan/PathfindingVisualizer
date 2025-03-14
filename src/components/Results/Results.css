@@ -1,0 +1,27 @@
+.results-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px;
+}
+
+.results-header {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+}
+
+.results-items-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.results-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    margin: 8px;
+    font-size: 12px;
+}

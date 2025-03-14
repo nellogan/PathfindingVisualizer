@@ -1,24 +1,23 @@
 import euclideanDistance from "./utils/euclideanDistance.js";
 import chebyshevDistance from "./utils/chebyshevDistance.js";
 import manhattanDistance from "./utils/manhattanDistance.js";
-import sortNodesByFScore from "./utils/sortNodesByFScore.js";
 import getNeighbors from "./utils/getNeighbors.js";
+import sortNodesByFScore from "./utils/sortNodesByFScore.js";
 
-/* A* search f(n) = g(n) + h(n), where g is cost from start node and where h is the heuristic function (distance from
-neighbor node to finish node). */
-export default function aStar(grid, startNode, finishNode) {
+/* Greedy best first search f(n) = h(n), where h is the heuristic function (distance from  neighbor node to finish
+node). */
+export default function greedyBestFirstSearch(grid, startNode, finishNode) {
     const openList = [startNode];
     const closedList = [];
     const neighborList = [];
     const preferredHeuristicFn = euclideanDistance; /* Try changing to chebyshevDistance or manhattanDistance. */
-    startNode.gscore = 0;
     startNode.fscore = preferredHeuristicFn(startNode, finishNode);
     let node = null;
     while ( openList.length ) {
         sortNodesByFScore(openList);
         node = openList.shift();
-        node.visited = true;
         if ( node.wall ) { continue; }
+        node.visited = true;
         closedList.push(node);
         node.queue = false;
         if ( node.finish ) {
@@ -27,11 +26,10 @@ export default function aStar(grid, startNode, finishNode) {
         let neighbors = getNeighbors(grid, node);
         let nList = [];
         for ( let neighbor of neighbors ) {
-            let tempGScore = node.gscore + neighbor.weight;
-            if ( tempGScore < neighbor.gscore ) {
+            let tempFScore = preferredHeuristicFn(neighbor, finishNode) + neighbor.weight;
+            if ( tempFScore < neighbor.fscore ) {
+                neighbor.fscore = tempFScore;
                 neighbor.previousNode = node;
-                neighbor.gscore = tempGScore;
-                neighbor.fscore = tempGScore + preferredHeuristicFn(neighbor, finishNode);
                 if ( !openList.includes(neighbor) ) {
                     openList.push(neighbor);
                     nList.push(neighbor);
@@ -39,7 +37,7 @@ export default function aStar(grid, startNode, finishNode) {
                 }
             }
         }
-         neighborList.push(nList);
+        neighborList.push(nList);
     }
     return [closedList, neighborList];
 }

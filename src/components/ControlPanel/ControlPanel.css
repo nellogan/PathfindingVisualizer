@@ -1,0 +1,58 @@
+.control-panel-container {
+    height: 50px;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+.control-panel-nav {
+    height: 100%;
+}
+
+.control-panel-ul {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: gray;
+    align-items: center;
+}
+
+.control-panel-il {
+    height: 80%;
+    position: relative;
+    display: block;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.control-panel-button {
+    height: 100%;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: filter 300ms;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+
+    &:disabled {
+        color: rgba(33, 0, 33, 0.3);
+        background-color: rgb(204,204,204);
+    }
+
+    &:hover:disabled {
+        color: rgba(33, 0, 33, 0.3);
+        cursor: not-allowed;
+        background-color: rgb(204,204,204);
+    }
+
+    &:hover {
+        background-color: rgb(255, 255, 140);
+        color: rgb(33, 0, 33);
+    }
+
+    color: rgb(255, 255, 255);
+    background-color: rgb(33, 0, 33);
+}
