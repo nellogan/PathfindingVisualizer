@@ -6,7 +6,6 @@ path from the current node (denoted as 'n') to the goal, thereby reducing the am
 shortest path in less time than Dijkstra's. Greedy best first search only use the heuristic function which will always 
 choose the current shortest cost edge.
 
-
 ### Search algorithms to choose from
     Depth first search
     Breadth first search
