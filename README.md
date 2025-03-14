@@ -40,13 +40,13 @@ A*: f(n) = g(n) + h(n)
 
 Greedy best first search: f(n) = h(n)
 
-### Tools used: 
-    React
-    CSS
-    Webpack
-    ESBuild
-
 ### How to run locally
     git clone https://github.com/nellogan/PathfindingVisualizer
     npm install
     npm run start-dev
+
+### Tools used
+    React
+    CSS
+    Webpack
+    ESBuild
